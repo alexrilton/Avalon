@@ -25,3 +25,4 @@ src/main/webapp/WEB-INF/glassfish-resources.xml
 src/main/webapp/WEB-INF/beans.xml
 pom.xml
 src/main/webapp/WEB-INF/glassfish-web.xml
+/target/
