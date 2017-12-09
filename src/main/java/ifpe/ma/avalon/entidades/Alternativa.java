@@ -22,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TB_ALTERNATIVA")
-public class Alternativa implements Serializable {
+public class Alternativa implements Serializable, Comparable<Alternativa> {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -38,6 +38,14 @@ public class Alternativa implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_QUESTAO" , referencedColumnName = "ID_QUESTAO", nullable = false)
     private Questao questao;
+
+    public Alternativa() {
+    }
+    
+    public Alternativa(String valor, boolean correta) {
+        this.setValor(valor);
+        this.setCorreta(correta);
+    }
 
     public String getValor() {
         return valor;
@@ -95,6 +103,13 @@ public class Alternativa implements Serializable {
     @Override
     public String toString() {
         return "ifpe.ma.avalon.entidades.Alternativa[ id=" + id + " ]";
+    }
+
+    @Override
+    public int compareTo(Alternativa outra) {
+        if (outra == null)
+            throw new IllegalArgumentException();
+        return this.getValor().compareTo(outra.getValor());
     }
     
 }

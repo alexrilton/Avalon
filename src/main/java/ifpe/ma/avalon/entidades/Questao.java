@@ -30,28 +30,32 @@ public class Questao implements Serializable {
     @Column(name = "ID_QUESTAO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(name = "TXT_ENUNCIADO", length = 1000, nullable = false)
     private String enunciado;
-    
+
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "questao")
     private final List<Alternativa> alternativas;
-    
-    public Questao(){
+
+    public Questao() {
         this.alternativas = new ArrayList<>();
     }
-    
+
     public List<Alternativa> getAlternativas() {
         return alternativas;
     }
 
-    public void addAlternativa(Alternativa alternativa){
-        if(!alternativas.contains(alternativa)){            
-             alternativa.setQuestao(this);
-             alternativas.add(alternativa);
+    public void addAlternativa(Alternativa alternativa) {
+        for (Alternativa alternativa1 : alternativas) {
+            if (alternativa1.compareTo(alternativa) == 0) {
+                return;
+            }
         }
+
+        alternativa.setQuestao(this);
+        alternativas.add(alternativa);
     }
-    
+
     public String getEnunciado() {
         return enunciado;
     }
@@ -60,8 +64,6 @@ public class Questao implements Serializable {
         this.enunciado = enunciado;
     }
 
-    
-    
     public Long getId() {
         return id;
     }
@@ -94,5 +96,5 @@ public class Questao implements Serializable {
     public String toString() {
         return "ifpe.ma.avalon.entidades.Questao[ id=" + id + " ]";
     }
-    
+
 }

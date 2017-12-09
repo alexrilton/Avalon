@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Avalon</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+
+            <p:layoutUnit position="north" size="100">
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="250">
+                <h:form>
+                    <p:menu>
+                        <p:submenu label="Home">
+                            <p:menuitem value="Voltar" actionListener="#menuView.save}"/>            
+                        </p:submenu>
+                        <p:submenu label="Prova">
+                            <p:menuitem value="Gerar Prova" actionListener="#menuView.delete}"/>
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <h:form>
+                    <p:fieldset legend="Criar Questão">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel for="enunciado" value="Enunciado:" />
+                            <p:inputTextarea id="enunciado" value="#{questaoBean.enunciado}" rows="4" cols="100" />                            
+                            
+                            <h:outputLabel for="altA" value="A)" />
+                            <p:inputText id="altA" value="#{questaoBean.altA}" size="100"/>
+                            
+                            <h:outputLabel for="altB" value="B)" />
+                            <p:inputText id="altB" value="#{questaoBean.altB}" size="100" />
+                            
+                            <h:outputLabel for="altC" value="C)" />
+                            <p:inputText id="altC" value="#{questaoBean.altC}" size="100"/>
+                            
+                            <h:outputLabel for="altD" value="D)" />
+                            <p:inputText id="altD" value="#{questaoBean.altD}" size="100"/>
+                            
+                            <h:outputLabel for="altE" value="E)" />
+                            <p:inputText id="altE" value="#{questaoBean.altE}" size="100"/>
+                        </h:panelGrid>
+                        
+                        <h:commandButton value="Salvar" actionListener="#{questaoBean.salvar()}"/>
+                    </p:fieldset>
+                </h:form>
+
+            </p:layoutUnit>
+
+        </p:layout>
+    </h:body>
+</html>
+
